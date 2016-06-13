@@ -12,9 +12,11 @@ public class UrlUpdateChecker{
    public static void main (String[] args) throws IOException, InterruptedException{
    
       String n = JOptionPane.showInputDialog("Please Enter a Url: ");
-      if(!n.startsWith("http://") || !n.startsWith ("https://")){
+      if(!n.startsWith("http")){ //check if http is there and adds it if not
+         
          n = "http://" + n;
       }
+      System.out.println(n);
       int updateCounter = 0;
       JFrame frame = new JFrame("Website Update!");
       
@@ -30,7 +32,7 @@ public class UrlUpdateChecker{
             Thread.sleep(5000);
          }else{
             checkSumDB.put(url, currentChecksum);
-            updateCounter ++; //excludes first check (obviously updated)
+            updateCounter ++; //excludes first check (Code considers it update...fix this)
             if (updateCounter > 1){
                JOptionPane.showMessageDialog(frame,"There's been an update for: "+url);
                System.exit(0);
