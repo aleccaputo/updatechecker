@@ -10,6 +10,7 @@ public class UrlUpdateChecker{
    static Map<String, String> checkSumDB = new HashMap<String, String>();
    
    public static void main (String[] args) throws IOException, InterruptedException{
+      JFrame frame = new JFrame("Website Update!");
    
       String n = JOptionPane.showInputDialog("Please Enter a Url: ");
       if(!n.startsWith("http")){ //check if http is there and adds it if not
@@ -17,8 +18,13 @@ public class UrlUpdateChecker{
          n = "http://" + n;
       }
       System.out.println(n);
+      
+      if (n.equals("http://google.com")|| n.equals("http://www.google.com")||n.equals("https://google.com")||n.equals("http://www.google.com")) {
+          JOptionPane.showMessageDialog(frame,""+n+" is always updating!");
+          System.exit(0);
+      }
+      
       int updateCounter = 0;
-      JFrame frame = new JFrame("Website Update!");
       
       while (true){
          String url = n;
@@ -52,4 +58,3 @@ public class UrlUpdateChecker{
       return DigestUtils.sha256Hex(huc.getInputStream());
    }
 }
-
